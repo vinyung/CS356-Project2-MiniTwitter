@@ -1,5 +1,6 @@
 package miniTwitter;
 
-public interface Component {//interface component
+public interface Component 
+{//interface component
 
 }
