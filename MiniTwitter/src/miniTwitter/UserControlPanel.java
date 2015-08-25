@@ -16,35 +16,45 @@ import java.awt.event.ContainerEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
 @SuppressWarnings("serial")
-public class UserControlPanel extends JFrame{
+public class UserControlPanel extends JFrame
+{
 
 	private JPanel contentPane;
 	private User user;
 	public static int tweetCount;//integer to keep track of tweets, is static
 //launches the application
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		//creation of a new user control panel
 	}
 		
-	public void run() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+	public void run() 
+	{
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
+				try
+				{
 					UserControlPanel frame = new UserControlPanel();//creates new control panel, if there is an exception it prints location
 					frame.setVisible(true);
-				} catch (Exception e) {
+				} 
+				catch (Exception e) 
+				{
 					e.printStackTrace();
 				}
 			}
 		});
 	}
 
-	public UserControlPanel(User user) {//constructor
+	public UserControlPanel(User user)
+	{//constructor
 		this.user = user;
 	}
 	
 //creates the frame
-	public UserControlPanel() {
+	public UserControlPanel() 
+	{
 		setBackground(Color.WHITE);
 		setBounds(100, 100, 465, 420);
 		contentPane = new JPanel();
@@ -67,18 +77,16 @@ public class UserControlPanel extends JFrame{
 		contentPane.add(list);//adds it to the content pane aka gui
 		
 		JButton followUser = new JButton("Follow User");//new button to follow user
-		followUser.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		followUser.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
 				System.out.println("You are now following " + textArea.getText());//prints out message and user you are following
-				follow.addElement(textArea.getText());//adds text to the list of people you are following
-				
+				follow.addElement(textArea.getText());//adds text to the list of people you are following			
 			}
 		});
 		followUser.setBounds(235, 10, 205, 35);//sets bounds for the button
 		contentPane.add(followUser);//adds button to gui
-		
-	
-		
 		
 		textArea_1.setBounds(15, 175, 240, 50);//sets bounds for second text area
 		contentPane.add(textArea_1);//adds second text area to gui
@@ -96,8 +104,10 @@ public class UserControlPanel extends JFrame{
 		contentPane.add(textArea_1);//adds text area to gui
 		
 		JButton btnTweet = new JButton("Post Tweet");//button to post tweet
-		btnTweet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnTweet.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				System.out.println("Tweet posted");//prints out confirmation message
 				tweet.addElement(textArea_1.getText());//adds tweet to newsfeed
 				tweetCount++;//increments tweet counter
@@ -107,15 +117,13 @@ public class UserControlPanel extends JFrame{
 		contentPane.add(btnTweet);//adds tweet button to gui
 		
 		
-		textArea.addContainerListener(new ContainerAdapter() {//overide method for container listener
+		textArea.addContainerListener(new ContainerAdapter()
+		{//overide method for container listener
 			@Override
-			public void componentAdded(ContainerEvent arg0) {
-			}
+			public void componentAdded(ContainerEvent arg0){}
 		});
-		
-	
-		
 	}
+	
 	public int getTweetCount()//method to return tweet count
 	{
 		return tweetCount;//returns tweet count
